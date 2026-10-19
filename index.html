@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Королевский пивоваренный завод — живое пиво из Королёва</title>
+<meta name="description" content="Пивоваренный завод в Королёве. 27 сортов непастеризованного фильтрованного и нефильтрованного пива для магазинов разливного пива Москвы и Подмосковья. Заводские магазины в Королёве и Пушкино.">
+<meta name="theme-color" content="#F4EFE6">
+<!-- Адрес сайта: если домен другой — замените korpivo.ru здесь, в robots.txt и sitemap.xml -->
+<link rel="canonical" href="https://korpivo.ru/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://korpivo.ru/">
+<meta property="og:title" content="Королевский пивоваренный завод">
+<meta property="og:description" content="Живое пиво из Королёва. 27 сортов для магазинов разливного пива Москвы и Подмосковья.">
+<meta property="og:image" content="https://korpivo.ru/img/og.jpg">
+<link rel="icon" href="img/favicon-48.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+<!-- Шрифты и главная картинка грузятся первыми -->
+<link rel="preload" href="fonts/cormorant-garamond-cyrillic-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" href="img/brewer-720.webp"
+      imagesrcset="img/brewer-720.webp 720w, img/brewer-1200.webp 1200w"
+      imagesizes="(min-width: 960px) 52vw, 100vw" fetchpriority="high">
+<link rel="stylesheet" href="css/style.css">
+
+<script>
+  // Возрастное подтверждение: если уже подтверждали — окно не показываем
+  document.documentElement.className = 'js';
+  try { if (localStorage.getItem('age-ok') === '1') document.documentElement.classList.add('age-ok'); } catch (e) {}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Brewery",
+  "name": "Королевский пивоваренный завод",
+  "url": "https://korpivo.ru/",
+  "telephone": "+7 985 548-63-46",
+  "email": "kpk.korolev@list.ru",
+  "foundingDate": "2024-09-16",
+  "address": { "@type": "PostalAddress", "streetAddress": "ул. Тихонравова, 9", "addressLocality": "Королёв", "addressRegion": "Московская область", "addressCountry": "RU" },
+  "areaServed": ["Москва", "Московская область"]
+}
+</script>
+</head>
+<body id="top">
+
+<!-- ============ ВОЗРАСТНОЕ ПОДТВЕРЖДЕНИЕ ============ -->
+<div class="age" id="age" role="dialog" aria-modal="true" aria-labelledby="age-title">
+  <div class="age__card">
+    <img src="img/emblem-112.webp" width="56" height="55" alt="">
+    <p class="eyebrow">Королевский пивоваренный завод</p>
+    <h2 id="age-title" class="age__title">Вам исполнилось 18 лет?</h2>
+    <p class="age__text">Сайт содержит информацию об алкогольной продукции и предназначен только для совершеннолетних.</p>
+    <div class="age__actions">
+      <button class="btn btn--dark" type="button" data-age="yes">Да, мне есть 18</button>
+      <button class="btn btn--line" type="button" data-age="no">Нет</button>
+    </div>
+    <p class="age__deny" hidden>К сожалению, сайт доступен только лицам старше 18 лет.</p>
+  </div>
+</div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header">
+  <div class="wrap header__in">
+    <a class="brand" href="#top" data-to-top aria-label="Королевский пивоваренный завод — наверх">
+      <img src="img/emblem-112.webp" width="40" height="39" alt="">
+      <span class="brand__name">Королевский<small>пивоваренный завод</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Разделы сайта">
+      <a href="#about">О заводе</a>
+      <a href="#beers">Сорта</a>
+      <a href="#partners">Магазинам</a>
+      <a href="#where">Где купить</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="header__phone" href="tel:+79855486346">+7 985 548-63-46</a>
+    <button class="burger" type="button" aria-label="Меню" aria-controls="nav" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ ПЕРВЫЙ ЭКРАН ============ -->
+<section class="hero">
+  <div class="wrap hero__in">
+    <div class="hero__text">
+      <p class="eyebrow">Пивоваренный завод · Королёв, Московская область</p>
+      <h1 class="hero__title">Живое пиво <em>из&nbsp;Королёва</em></h1>
+      <!-- data-count: число сортов подставляется само из js/data.js ({n} — число, {сорта} — слово в нужной форме) -->
+      <p class="hero__lead">Варим непастеризованное фильтрованное и&nbsp;нефильтрованное пиво — <span data-count="{n}&nbsp;{сорта}">27&nbsp;сортов</span> для магазинов разливного пива Москвы и&nbsp;Подмосковья.</p>
+      <div class="hero__actions">
+        <a class="btn btn--dark" href="#beers">Смотреть сорта</a>
+        <a class="btn btn--line" href="tel:+79855486346">Позвонить</a>
+      </div>
+    </div>
+    <figure class="hero__art">
+      <img src="img/brewer-720.webp"
+           srcset="img/brewer-720.webp 720w, img/brewer-1200.webp 1200w"
+           sizes="(min-width: 960px) 52vw, 100vw"
+           width="1200" height="772" fetchpriority="high"
+           alt="Гравюра: пивовар с бокалом на фоне варочных котлов">
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <ul class="facts">
+      <li><b data-count="{n}">27</b><span data-count="{сортов} в линейке">сортов в линейке</span></li>
+      <li><b>4–7,5&nbsp;%</b><span>крепость</span></li>
+      <li><b>30 / 60</b><span>суток срок годности</span></li>
+      <li><b>2024</b><span>год основания</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ О ЗАВОДЕ ============ -->
+<section class="section about" id="about">
+  <div class="wrap about__in">
+    <div class="about__emblem reveal">
+      <img src="img/emblem-480.webp" width="480" height="473" loading="lazy" decoding="async"
+           alt="Знак завода: шишка хмеля в виде спутника внутри пивной пробки">
+    </div>
+    <div class="about__text">
+      <p class="eyebrow"><span class="num">I</span> О заводе</p>
+      <h2 class="h2 reveal">Пивоварня в&nbsp;городе, откуда начинался космос</h2>
+      <p class="reveal">Королевский пивоваренный завод основан в&nbsp;2024&nbsp;году, а&nbsp;в&nbsp;2025-м сварил первое пиво в&nbsp;Королёве. Наш знак — шишка хмеля, летящая как первый спутник: так мы отдаём дань родному городу.</p>
+      <p class="reveal">Мы не пастеризуем пиво, поэтому оно сохраняет вкус свежей варки. Каждый сорт задекларирован, а&nbsp;сроки годности честные и&nbsp;короткие.</p>
+
+      <ol class="timeline reveal">
+        <li><b>16 сентября 2024</b><span>Регистрация компании</span></li>
+        <li><b>2025</b><span>Первая варка в Королёве</span></li>
+        <li><b>Сегодня</b><span data-count="{n} {сортов} и магазины Москвы и Подмосковья">27 сортов и магазины Москвы и Подмосковья</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="pillars">
+      <li class="reveal">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c6 7 10 13 10 20a10 10 0 0 1-20 0c0-7 4-13 10-20Z"/><path d="M19 28a5 5 0 0 0 5 5"/></svg>
+        <h3>Непастеризованное</h3>
+        <p>Пиво не нагревают после брожения — сохраняются аромат и вкус свежей варки.</p>
+      </li>
+      <li class="reveal">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 5"/></svg>
+        <h3>Короткий срок</h3>
+        <p>Фильтрованное хранится 60 суток, нефильтрованное — 30. До и после вскрытия.</p>
+      </li>
+      <li class="reveal">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h20v36H14z"/><path d="M19 15h10M19 21h10M19 27h6"/><path d="m27 34 3 3 6-7"/></svg>
+        <h3>Задекларировано</h3>
+        <p>Все сорта прошли декларирование соответствия. Названия — только на русском языке.</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ---------- Производство: фото в img/production/ ---------- -->
+  <div class="wrap production" id="production">
+    <div class="production__head">
+      <div>
+        <p class="eyebrow">Производство</p>
+        <h3 class="production__title reveal">Немецкое и&nbsp;австрийское оборудование, классические рецепты</h3>
+      </div>
+      <ul class="production__facts reveal">
+        <li><b>Kaspar Schulz</b><span>варочный порядок немецкого производителя</span></li>
+        <li><b>от 3 недель</b><span>дображивание и созревание, в зависимости от сорта</span></li>
+        <li><b>1516</b><span>немецкие сорта — по закону о чистоте пива Reinheitsgebot</span></li>
+        <li><b>с 1996</b><span>совместный опыт нашей команды пивоваров</span></li>
+      </ul>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <a class="gallery__item gallery__item--a" href="img/production/tanks-1-1600.webp">
+        <img src="img/production/tanks-1-800.webp" srcset="img/production/tanks-1-800.webp 800w, img/production/tanks-1-1600.webp 1600w" sizes="(min-width: 900px) 66vw, 100vw" width="1600" height="1066" loading="lazy" decoding="async" alt="Цилиндро-конические танки брожения в цехе завода">
+      </a>
+      <a class="gallery__item gallery__item--b" href="img/production/cellar.webp">
+        <img src="img/production/cellar.webp" width="682" height="1024" loading="lazy" decoding="async" alt="Танк дображивания между ёмкостями">
+      </a>
+      <a class="gallery__item" href="img/production/brewhouse-1-1600.webp">
+        <img src="img/production/brewhouse-1-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="Варочный порядок с пультом управления и теплообменником">
+      </a>
+      <a class="gallery__item" href="img/production/tanks-2-1600.webp">
+        <img src="img/production/tanks-2-800.webp" width="800" height="525" loading="lazy" decoding="async" alt="Ряд танков брожения">
+      </a>
+      <a class="gallery__item" href="img/production/brewhouse-2-1600.webp">
+        <img src="img/production/brewhouse-2-800.webp" width="800" height="525" loading="lazy" decoding="async" alt="Варочный цех: котлы и трубопроводы">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СОРТА ============ -->
+<section class="section beers" id="beers">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow"><span class="num">II</span> Ассортимент</p>
+      <h2 class="h2" data-count="{n} {сортов} пива">27 сортов пива</h2>
+      <p class="section__lead">От лёгких лагеров до стаута и ДИПА. Многие сорта варим в двух вариантах — фильтрованном и нефильтрованном.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Фильтр сортов">
+      <div class="filters__group" data-filter="type">
+        <button type="button" class="chip is-on" data-value="all">Все</button>
+        <button type="button" class="chip" data-value="light">Светлое</button>
+        <button type="button" class="chip" data-value="wheat">Пшеничное</button>
+        <button type="button" class="chip" data-value="dark">Тёмное</button>
+        <button type="button" class="chip chip--new" data-value="new">Новинки</button>
+      </div>
+      <div class="filters__group" data-filter="filt">
+        <button type="button" class="chip is-on" data-value="all">Любое</button>
+        <button type="button" class="chip" data-value="f">Фильтрованное</button>
+        <button type="button" class="chip" data-value="u">Нефильтрованное</button>
+      </div>
+      <p class="filters__count" aria-live="polite">Показано: <b id="beer-count">27</b></p>
+    </div>
+
+    <!-- Плитки сортов строятся из файла js/data.js — правьте сорта там -->
+    <div class="beer-grid" id="beer-grid"></div>
+    <noscript><p class="beers__empty">Включите JavaScript, чтобы увидеть список сортов.</p></noscript>
+    <p class="beers__empty" id="beer-empty" hidden>Таких сортов сейчас нет — попробуйте другой фильтр.</p>
+    <p class="beers__note">Нажмите на сорт, чтобы открыть карточку с ценником и составом. Срок годности: фильтрованное — 60 суток, нефильтрованное — 30 суток (до и после вскрытия).</p>
+  </div>
+</section>
+
+<!-- ============ МАГАЗИНАМ ============ -->
+<section class="section partners" id="partners">
+  <div class="wrap partners__in">
+    <div class="partners__text">
+      <p class="eyebrow"><span class="num">III</span> Сотрудничество</p>
+      <h2 class="h2">Магазинам разливного пива</h2>
+      <p class="section__lead">Работаем с&nbsp;магазинами Москвы и&nbsp;Подмосковья. Позвоните или оставьте заявку — подберём ассортимент под вашу витрину и&nbsp;расскажем об&nbsp;условиях.</p>
+
+      <ol class="perks">
+        <li class="reveal"><span class="num">I</span><div><h3>Широкая линейка</h3><p><span data-count="{n} {сортов}">27 сортов</span>: от лёгких лагеров до стаута и&nbsp;ДИПА, фильтрованные и&nbsp;нефильтрованные.</p></div></li>
+        <li class="reveal"><span class="num">II</span><div><h3>Фирменные ценники</h3><p>Печатаем ценник на&nbsp;каждый сорт для фальш-панели — остаётся вписать цену за&nbsp;литр.</p></div></li>
+        <li class="reveal"><span class="num">III</span><div><h3>Свежая варка</h3><p>Непастеризованное пиво с&nbsp;честным сроком годности: 60&nbsp;суток фильтрованное, 30&nbsp;— нефильтрованное.</p></div></li>
+        <li class="reveal"><span class="num">IV</span><div><h3>Ежедневная доставка</h3><p>Возим по&nbsp;Москве и&nbsp;области каждый день. Вся продукция задекларирована.</p></div></li>
+      </ol>
+
+      <div class="callout">
+        <p>Звоните по поводу поставок</p>
+        <a class="callout__phone" href="tel:+79855486346">+7&nbsp;985&nbsp;548-63-46</a>
+        <!-- Прайс-лист: замените файл files/price-list.pdf, ссылка останется прежней -->
+        <a class="callout__file" href="files/price-list.pdf" target="_blank" rel="noopener" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+          Скачать прайс-лист, PDF
+        </a>
+        <!-- Ссылка на папку с исходниками ценников: адрес задаётся в js/data.js → settings.tagsUrl. Пока пусто — ссылки не видно -->
+        <a class="callout__file" id="tags-link" href="#" target="_blank" rel="noopener" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h6l2 2h8v10H4z"/></svg>
+          Ценники для печати — все сорта
+        </a>
+      </div>
+    </div>
+
+    <figure class="tags">
+      <div class="tags__row">
+        <img src="img/tags/nemetskoe.webp" width="520" height="738" loading="lazy" decoding="async" alt="Ценник сорта «Немецкое»">
+        <img src="img/tags/avtorskoe.webp" width="520" height="730" loading="lazy" decoding="async" alt="Ценник сорта «Авторское»">
+        <img src="img/tags/braun-el.webp" width="520" height="730" loading="lazy" decoding="async" alt="Ценник сорта «Браун эль»">
+      </div>
+      <figcaption>Так выглядят наши ценники на фальш-панели магазина</figcaption>
+    </figure>
+  </div>
+
+  <!-- ---------- Заявка от магазина (отправляет send.php, см. README) ---------- -->
+  <div class="wrap">
+    <div class="order" id="order">
+      <div class="order__head">
+        <h3 class="order__title">Заявка на поставку</h3>
+        <p>Оставьте контакты — перезвоним в&nbsp;рабочее время, пришлём прайс и&nbsp;договоримся о&nbsp;пробной поставке.</p>
+      </div>
+      <form class="form" id="order-form" novalidate>
+        <label class="form__field"><span>Магазин или компания</span><input name="shop" type="text" maxlength="120" autocomplete="organization" required></label>
+        <label class="form__field"><span>Город, адрес</span><input name="city" type="text" maxlength="160" autocomplete="address-level2"></label>
+        <label class="form__field"><span>Как к вам обращаться</span><input name="name" type="text" maxlength="80" autocomplete="name" required></label>
+        <label class="form__field"><span>Телефон</span><input name="phone" type="tel" maxlength="40" autocomplete="tel" inputmode="tel" required></label>
+        <label class="form__field form__field--wide"><span>Комментарий — какие сорта интересуют</span><textarea name="comment" rows="3" maxlength="1000"></textarea></label>
+        <!-- ловушка для спам-ботов: люди это поле не видят -->
+        <label class="form__trap" aria-hidden="true">Сайт <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        <label class="form__agree form__field--wide"><input name="agree" type="checkbox" required> <span>Согласен на&nbsp;обработку персональных данных согласно <a href="privacy.html" target="_blank">политике конфиденциальности</a></span></label>
+        <div class="form__foot form__field--wide">
+          <button class="btn btn--light" type="submit">Отправить заявку</button>
+          <p class="form__status" id="order-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ГДЕ КУПИТЬ ============ -->
+<section class="section where" id="where">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow"><span class="num">IV</span> Где купить</p>
+      <h2 class="h2">Заводские магазины</h2>
+      <p class="section__lead">Здесь продаётся только наше пиво — полный ассортимент, лучшие цены и&nbsp;самая свежая варка. Также ищите нас в&nbsp;магазинах разливного пива Москвы и&nbsp;Подмосковья.</p>
+    </div>
+
+    <div class="where__in">
+      <!-- Список магазинов и точки на карте строятся из файла js/data.js — правьте магазины там -->
+      <ul class="shops" id="shops"></ul>
+      <div class="map" id="map">
+        <p class="map__ph">Загружаем карту…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КОНТАКТЫ ============ -->
+<section class="section contacts" id="contacts">
+  <div class="wrap contacts__in">
+    <div>
+      <p class="eyebrow"><span class="num">V</span> Контакты</p>
+      <h2 class="h2">Свяжитесь с&nbsp;нами</h2>
+    </div>
+    <div class="contacts__list">
+      <div><p class="eyebrow">Отдел продаж</p><a class="contacts__phone" href="tel:+79855486346">+7&nbsp;985&nbsp;548-63-46</a></div>
+      <div><p class="eyebrow">Почта</p><p><a class="contacts__mail" href="mailto:kpk.korolev@list.ru">kpk.korolev@list.ru</a></p></div>
+      <div><p class="eyebrow">Производство</p><p>Московская обл., г.&nbsp;Королёв, ул.&nbsp;Тихонравова,&nbsp;9</p></div>
+      <div><p class="eyebrow">География поставок</p><p>Москва и&nbsp;Московская область</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="footer">
+  <div class="wrap footer__in">
+    <img class="footer__logo" src="img/logo-760.webp" width="380" height="107" loading="lazy" decoding="async" alt="Королевский пивоваренный завод">
+    <div class="footer__info">
+      <!-- Реквизиты юрлица (те же — в privacy.html) -->
+      <p>ООО «Королёвская пивоваренная компания» (ООО «КП КОМПАНИЯ») · ИНН 5018218984 · КПП 501801001 · ОГРН 1245000104800</p>
+      <p>141091, Московская обл., г.&nbsp;Королёв, мкр.&nbsp;Юбилейный, ул.&nbsp;М.К.&nbsp;Тихонравова, д.&nbsp;9</p>
+      <p>Сайт предназначен для лиц старше 18 лет. Продажа алкогольной продукции через сайт не осуществляется.</p>
+      <p>© 2024–2026 Королевский пивоваренный завод · <a href="privacy.html">Политика конфиденциальности</a></p>
+    </div>
+  </div>
+  <p class="warning">Чрезмерное употребление алкоголя вредит вашему здоровью</p>
+</footer>
+
+<!-- ============ КАРТОЧКА СОРТА (заполняется из js/data.js) ============ -->
+<dialog class="sort" id="sort" aria-labelledby="sort-name">
+  <button class="sort__close" type="button" data-sort-close aria-label="Закрыть">×</button>
+  <div class="sort__in">
+    <div class="sort__tag" id="sort-tag"></div>
+    <div class="sort__body">
+      <p class="beer__kind" id="sort-kind"></p>
+      <h2 class="sort__name" id="sort-name"></h2>
+      <div class="sort__desc" id="sort-desc"></div>
+      <dl class="sort__spec" id="sort-spec"></dl>
+      <dl class="sort__recipe" id="sort-recipe"></dl>
+      <div class="sort__actions">
+        <button class="btn btn--dark" type="button" data-sort-order>Заявка на этот сорт</button>
+        <a class="btn btn--line" href="tel:+79855486346">Позвонить</a>
+      </div>
+      <div class="sort__nav">
+        <button type="button" data-sort-step="-1">← Предыдущий</button>
+        <button type="button" data-sort-step="1">Следующий →</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ ПРОСМОТР ФОТО ============ -->
+<dialog class="photo" id="photo" aria-label="Фото производства">
+  <button class="sort__close" type="button" data-photo-close aria-label="Закрыть">×</button>
+  <img id="photo-img" src="" alt="">
+  <button class="photo__step photo__step--prev" type="button" data-photo-step="-1" aria-label="Предыдущее фото">←</button>
+  <button class="photo__step photo__step--next" type="button" data-photo-step="1" aria-label="Следующее фото">→</button>
+</dialog>
+
+<!-- ============ ВСПЛЫВАЮЩЕЕ СООБЩЕНИЕ (номер скопирован и т. п.) ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<!-- ============ ПЛАШКА ПРО COOKIE (показывается, только если подключена Метрика) ============ -->
+<div class="cookie" id="cookie" hidden>
+  <p>Мы используем cookie и&nbsp;Яндекс.Метрику, чтобы понимать, чем пользуются посетители сайта. <a href="privacy.html" target="_blank">Подробнее</a></p>
+  <div class="cookie__actions">
+    <button class="btn btn--dark" type="button" data-cookie="yes">Хорошо</button>
+    <button class="btn btn--line" type="button" data-cookie="no">Отказаться</button>
+  </div>
+</div>
+
+<script src="js/data.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
