@@ -1,0 +1,33 @@
+# Настройки для хостинга на Apache (Beget, Timeweb, REG.RU и др.).
+# На других серверах файл просто игнорируется.
+
+AddDefaultCharset utf-8
+Options -Indexes
+DirectoryIndex index.html
+
+AddType image/webp .webp
+AddType font/woff2 .woff2
+
+# Сжатие текста
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript text/plain image/svg+xml
+</IfModule>
+
+# Кеш в браузере: картинки и шрифты надолго, страница/стили/скрипты — коротко,
+# чтобы правки сразу были видны посетителям.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png  "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css   "access plus 1 hour"
+  ExpiresByType text/javascript "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType text/html  "access plus 0 seconds"
+</IfModule>
+
+# Не отдавать служебный файл с инструкцией
+<Files "README.md">
+  Require all denied
+</Files>

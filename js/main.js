@@ -177,18 +177,46 @@
     var countEl = document.getElementById('beer-count');
     var emptyEl = document.getElementById('beer-empty');
 
+    /* Сколько плиток видно сразу: settings.beerRows рядов (на телефоне — 5 плиток), остальное — по кнопке */
+    var moreBtn = document.getElementById('beer-more');
+    var expanded = false;
+    var limit = function () {
+      var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+      return cols === 1 ? 5 : cols * (SETTINGS.beerRows || 3);
+    };
+
     var apply = function () {
-      var shown = 0;
+      var shown = 0, visible = 0, lim = limit();
       beers.forEach(function (b) {
         var ok = (state.type === 'all' || b.dataset.type === state.type || (state.type === 'new' && b.dataset.new === '1')) &&
                  (state.filt === 'all' || b.dataset.filt.split(' ').indexOf(state.filt) !== -1);
         b.hidden = !ok;
+        b.classList.toggle('beer--more', ok && visible >= lim);
+        if (ok) visible++;
         if (ok && !b.classList.contains('beer--ending')) shown++;
       });
+      var collapsible = visible > lim;
+      grid.classList.toggle('is-collapsed', collapsible && !expanded);
+      if (moreBtn) {
+        moreBtn.parentNode.hidden = !collapsible;
+        var rest = visible - lim;
+        moreBtn.textContent = expanded ? 'Свернуть ↑' : 'Показать ещё ' + rest + ' ' + plural(rest, 'сорт', 'сорта', 'сортов') + ' ↓';
+        moreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      }
       countEl.textContent = shown;
       emptyEl.hidden = shown !== 0;
     };
     apply();
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        expanded = !expanded;
+        apply();
+        if (!expanded) document.getElementById('beers').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    }
+    var resizeTimer;
+    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(apply, 150); });
 
     document.querySelectorAll('.filters__group').forEach(function (group) {
       group.addEventListener('click', function (e) {
@@ -299,13 +327,6 @@
     dlg.addEventListener('close', onClosed);
     dlg.addEventListener('click', function (e) {
       if (e.target === dlg || e.target.closest('[data-sort-close]')) { closeSort(); return; }
-      if (e.target.closest('[data-sort-order]')) {
-        var name = byId[currentId] && byId[currentId].name;
-        lastFocus = null;
-        closeSort();
-        orderFor(name);
-        return;
-      }
       var step = e.target.closest('[data-sort-step]');
       if (step) {
         var ids = visibleIds();
@@ -329,56 +350,39 @@
     fromHash();
   }
 
-  /* ---------- Заявка от магазина ---------- */
-  var form = document.getElementById('order-form');
-  var orderFor = function (sortName) {
-    var order = document.getElementById('order');
-    if (!order) return;
-    if (sortName && form) {
-      var c = form.elements.comment;
-      var line = 'Интересует: ' + sortName;
-      if (c.value.indexOf(sortName) === -1) c.value = c.value ? c.value + '\n' + line : line;
-    }
-    order.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-    setTimeout(function () { form && form.elements.shop.focus({ preventScroll: true }); }, reduceMotion ? 0 : 600);
-  };
+  /* ---------- «Где удобнее написать?» — Telegram или почта с готовым текстом ---------- */
+  var ask = document.getElementById('ask');
+  if (ask && ask.showModal) {
+    var tg = SETTINGS.telegram || '', email = SETTINGS.email || '';
+    var askTg = document.getElementById('ask-tg'), askMail = document.getElementById('ask-mail');
+    askTg.hidden = !tg; askMail.hidden = !email;
 
-  if (form) {
-    var statusEl = document.getElementById('order-status');
-    var startedAt = Date.now();
-    var setStatus = function (text, kind) {
-      statusEl.textContent = text;
-      statusEl.className = 'form__status' + (kind ? ' is-' + kind : '');
+    var openAsk = function (sortName) {
+      var text = sortName
+        ? 'Здравствуйте! Интересует сорт «' + sortName + '» для магазина разливного пива.'
+        : 'Здравствуйте! Интересуют поставки вашего пива для магазина разливного пива.';
+      var subject = sortName ? 'Сорт «' + sortName + '»' : 'Поставки пива';
+      document.getElementById('ask-tag').textContent = sortName ? 'Сорт «' + sortName + '»' : 'Поставки для магазинов';
+      askTg.href = 'https://t.me/' + encodeURIComponent(tg) + '?text=' + encodeURIComponent(text);
+      askMail.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+      ask.dataset.text = text;
+      ask.showModal();
     };
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var el = form.elements;
-      var bad = ['shop', 'name', 'phone'].filter(function (k) { return !el[k].value.trim(); });
-      if (el.phone.value && el.phone.value.replace(/\D/g, '').length < 10) bad.push('phone');
-      form.querySelectorAll('.is-bad').forEach(function (x) { x.classList.remove('is-bad'); });
-      bad.forEach(function (k) { el[k].closest('.form__field').classList.add('is-bad'); });
-      if (bad.length) { setStatus('Заполните название, имя и телефон.', 'err'); el[bad[0]].focus(); return; }
-      if (!el.agree.checked) { setStatus('Нужно согласие на обработку данных.', 'err'); el.agree.focus(); return; }
-
-      var btn = form.querySelector('[type="submit"]');
-      btn.disabled = true;
-      setStatus('Отправляем…');
-      var body = new FormData(form);
-      body.append('elapsed', String(Math.round((Date.now() - startedAt) / 1000)));
-
-      fetch(SETTINGS.formEndpoint || 'send.php', { method: 'POST', body: body })
-        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
-        .then(function (res) {
-          if (!res.ok) throw new Error(res.error || 'fail');
-          form.reset();
-          setStatus('Спасибо! Заявка отправлена — скоро перезвоним.', 'ok');
-          goal('order_sent');
-        })
-        .catch(function () {
-          setStatus('Не получилось отправить. Позвоните нам: +7 985 548-63-46 или напишите на kpk.korolev@list.ru', 'err');
-        })
-        .then(function () { btn.disabled = false; });
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-ask]');
+      if (!btn) return;
+      var name = btn.hasAttribute('data-ask-sort') && byId[currentId] ? byId[currentId].name : '';
+      openAsk(name);
+    });
+    ask.addEventListener('click', function (e) {
+      if (e.target === ask || e.target.closest('[data-ask-close]')) { ask.close(); return; }
+      var link = e.target.closest('#ask-tg, #ask-mail');
+      if (!link) return;
+      // Telegram не всегда подставляет текст сам — на всякий случай кладём его в буфер обмена
+      copyText(ask.dataset.text).catch(function () {});
+      goal(link.id === 'ask-tg' ? 'write_tg' : 'write_mail');
+      setTimeout(function () { ask.close(); }, 300);
     });
   }
 

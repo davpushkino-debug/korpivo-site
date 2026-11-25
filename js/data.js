@@ -32,8 +32,11 @@ window.SITE_DATA = {
   settings: {
     // Номер счётчика Яндекс.Метрики (только цифры). Пока пусто — Метрика и плашка про cookie не показываются.
     metrika: '',
-    // Куда отправляется форма заявки (скрипт на хостинге, см. README)
-    formEndpoint: 'send.php',
+    // Сколько рядов сортов показывать сразу (остальные — по кнопке «Показать ещё»). На телефоне всегда 5 плиток.
+    beerRows: 3,
+    // Куда пишут магазины (кнопки «Написать»): Telegram без @ и почта
+    telegram: 'davmoscow',
+    email: 'kpk.korolev@list.ru',
     // Ссылка на папку Google Диска с ценниками для печати (доступ «Все, у кого есть ссылка»). Пусто — ссылку не показываем.
     tagsUrl: 'https://drive.google.com/drive/folders/1iLlo3JOmenP2RLshk9gzaWsE889FJzr1'  // временно — папка дизайнера
   },
@@ -50,6 +53,10 @@ window.SITE_DATA = {
     { id: 'zhigulevskoe', name: 'Жигулевское', kind: 'Светлое', type: 'light', color: 'straw', filt: ['f'], alc: '4', og: '11', ibu: '16–18',
       desc: 'Лёгкое светлое пиво классической рецептуры: мягкая солодовая основа и чистый финиш.',
       more: '', malt: 'Светлый пилснер, бельгийский карамельный 100', hops: 'Magnum, Spalter Select', yeast: 'S-23, низовое брожение', label: '' },
+
+    { id: 'zhigulevskoe-legkoe', name: 'Жигулевское Лёгкое', kind: 'Светлое', type: 'light', color: 'straw', filt: ['f'], alc: '4', og: '10,5', ibu: '', badge: 'Новинка',
+      desc: 'Облегчённое Жигулёвское: мягкий солодовый вкус, лёгкое тело и освежающий финиш.',
+      more: '', malt: 'Светлый пилснер Курск, Arome Malt (Бельгия)', hops: 'Magnum, Spalter Select', yeast: 'S-23, низовое брожение', label: 'img/tags/zhigulevskoe-legkoe.webp' },
 
     { id: 'avtorskoe', name: 'Авторское', kind: 'Светлое · фирменный рецепт', type: 'light', color: 'gold', filt: ['f'], alc: '4,5', og: '12', ibu: '16–18', star: true,
       desc: 'Рецепт нашего пивовара: округлый солодовый вкус и деликатная хмелевая горчинка.',
@@ -77,19 +84,24 @@ window.SITE_DATA = {
 
     { id: 'amberg', name: 'Амберг', kind: 'Светлое', type: 'light', color: 'gold', filt: ['f', 'u'], alc: '5,5', og: '14', ibu: '18–20',
       desc: 'Плотное светлое пиво с насыщенным солодовым телом и медово-хлебными оттенками.',
-      more: '', malt: 'Премиум пилснер, Кара Клэр', hops: 'Perle, Mittelfrüh', yeast: 'S-23, низовое брожение', label: '' },
+      more: '', malt: 'Премиум пилснер, Кара Клэр', hops: 'Perle, Mittelfrüh', yeast: 'S-23, низовое брожение', label: { f: 'img/tags/amberg-f.webp', u: 'img/tags/amberg-u.webp' } },
 
-    { id: 'bavarskoe', name: 'Баварское', kind: 'Светлое', type: 'light', color: 'gold', filt: ['f', 'u'], alc: '5', og: '13', ibu: '',
+    { id: 'bavarskoe', name: 'Баварское', kind: 'Светлое', type: 'light', color: 'gold', filt: ['f', 'u'], alc: '5', og: '13', ibu: '', hidden: true,   // 25.11: в CRM «Больше не варим»
       desc: 'В баварском стиле: мягкое, солодовое, с лёгкой хмелевой свежестью.',
       more: '', malt: 'Авангард пилснер', hops: 'Tradition, Tettnanger', yeast: 'S-23, низовое брожение', label: '' },
 
-    { id: 'korolevskoe', name: 'Королёвское', kind: 'Светлое · флагман', type: 'light', color: 'gold', filt: ['f', 'u'], alc: '6', og: '14', ibu: '', star: true,
-      desc: 'Названо в честь родного города: крепкое, плотное, с глубоким солодовым вкусом.',
-      more: '', malt: 'Светлый пилснер', hops: 'Hallertauer Blanc, Mandarina Bavaria', yeast: 'S-23, низовое брожение', label: '' },
+    // 25.11: как в CRM — Королёвское теперь 4 % / 12 (прежнее крепкое 6 % / 14 — это Пушкинское)
+    { id: 'korolevskoe', name: 'Королёвское', kind: 'Светлое · флагман', type: 'light', color: 'gold', filt: ['f', 'u'], alc: '4', og: '12', ibu: '', star: true,
+      desc: 'Наше фирменное пиво, названное в честь родного Королёва, — первый сорт, сваренный нашим заводом. Мягкий солодовый вкус и чистый, лёгкий финиш.',
+      more: '', malt: 'Светлый пилснер', hops: 'Hallertauer Blanc, Mandarina Bavaria', yeast: 'S-23, низовое брожение', label: { f: 'img/tags/korolevskoe-f.webp', u: 'img/tags/korolevskoe-u.webp' } },
 
-    { id: 'hop-lager', name: 'Хоп лагер', kind: 'Светлое · охмелённый лагер', type: 'light', color: 'gold', filt: ['u'], alc: '6', og: '13', ibu: '', badge: 'Новинка',
+    { id: 'pushkinskoe', name: 'Пушкинское', kind: 'Светлое', type: 'light', color: 'gold', filt: ['f', 'u'], alc: '6', og: '14', ibu: '',
+      desc: 'Сбалансированный солодовый вкус с лёгкой хмелевой горчинкой.',
+      more: '', malt: 'Светлый пилснер, Floor Malt', hops: 'Hallertauer Blanc, Mandarina Bavaria', yeast: 'S-23, низовое брожение', label: { f: 'img/tags/pushkinskoe-f.webp', u: 'img/tags/pushkinskoe-u.webp' } },
+
+    { id: 'hop-lager', name: 'Хоп лагер', kind: 'Светлое · охмелённый лагер', type: 'light', color: 'gold', filt: ['f'], alc: '6', og: '13', ibu: '', badge: 'Новинка',
       desc: 'Лагер с щедрым охмелением: цитрусовые и тропические ноты на чистой солодовой основе.',
-      more: '', malt: 'Светлый ячменный, Авангард', hops: 'Mandarina Bavaria, Hallertauer Blanc, Motueka', yeast: 'S-34/70, низовое брожение', label: 'img/labels/hop-lager-u.webp' },
+      more: '', malt: 'Светлый ячменный, Авангард', hops: 'Mandarina Bavaria, Hallertauer Blanc, Motueka', yeast: 'S-34/70, низовое брожение', label: 'img/tags/hop-lager-f.webp' },
 
     { id: 'angliyskiy-el', name: 'Английский эль', kind: 'Светлое · эль', type: 'light', color: 'amber', filt: ['u'], alc: '4,7', og: '12', ibu: '',
       desc: 'Эль верхового брожения с фруктовыми нотами и выразительным хмелем.',
@@ -127,23 +139,23 @@ window.SITE_DATA = {
       desc: 'Золотистое пиво с медовыми солодовыми тонами и плотным телом.',
       more: '', malt: 'Премиум пилснер, Кара Клэр', hops: 'Perle, Mittelfrüh', yeast: 'S-23, низовое брожение', label: { f: 'img/labels/zolotoe-f.webp', u: 'img/labels/zolotoe-u.webp' } },
 
-    { id: 'apa', name: 'АПА', kind: 'Светлое · эль', type: 'light', color: 'gold', filt: ['u'], alc: '6', og: '14', ibu: '50',
+    { id: 'apa', name: 'АПА', kind: 'Светлое · эль', type: 'light', color: 'gold', filt: ['u'], alc: '6', og: '14', ibu: '50', hidden: true,   // 25.11: в CRM снят
       desc: 'Американский светлый эль: яркий цитрусовый и хвойный аромат хмеля.',
       more: '', malt: 'Пейл эль', hops: 'Nugget, Centennial, Citra, Chinook, Idaho, Mosaic', yeast: 'BRY-97, верховое брожение', label: '' },
 
-    { id: 'dipa', name: 'ДИПА', kind: 'Светлое · эль', type: 'light', color: 'amber', filt: ['u'], alc: '7,5', og: '18', ibu: '75–80',
+    { id: 'dipa', name: 'ДИПА', kind: 'Светлое · эль', type: 'light', color: 'amber', filt: ['f'], alc: '7,5', og: '18', ibu: '75–80',   // 25.11: в CRM продаётся фильтрованное
       desc: 'Двойной ИПА: насыщенная хмелевая ароматика, плотное тело, выразительная горечь.',
-      more: '', malt: 'Пейл эль, Кара Клэр, Кристал', hops: 'Magnum, Mosaic, Chinook, Simcoe, Cascade, Атанум', yeast: 'BRY-97, верховое брожение', label: '' },
+      more: '', malt: 'Пейл эль, Кара Клэр, Кристал', hops: 'Magnum, Mosaic, Chinook, Simcoe, Cascade, Атанум', yeast: 'BRY-97, верховое брожение', label: 'img/tags/dipa.webp' },
 
     { id: 'chervonnoe', name: 'Червонное', kind: 'Светлое · эль', type: 'light', color: 'red', filt: ['u'], alc: '6', og: '14', ibu: '',
       desc: 'Красноватый отлив, карамельный солод и мягкая горчинка.',
-      more: '', malt: 'Пейл эль, Кара Клэр, Кристал, светлый пилснер', hops: 'Magnum, Mosaic, Chinook, Simcoe, Cascade, Атанум', yeast: 'BRY-97, верховое брожение', label: '' },
+      more: '', malt: 'Пейл эль, Кара Клэр, Кристал, светлый пилснер', hops: 'Magnum, Mosaic, Chinook, Simcoe, Cascade, Атанум', yeast: 'BRY-97, верховое брожение', label: 'img/tags/chervonnoe-u.webp' },
 
     { id: 'vit-bir', name: 'Вит бир', kind: 'Пшеничное', type: 'wheat', color: 'wheat', filt: ['u'], alc: '4,7', og: '13', ibu: '',
       desc: 'Пшеничное пиво в бельгийском стиле: светлое, мутное, с пряными и цитрусовыми нотами.',
-      more: '', malt: 'Светлый пилснер, пшеничный (Castle Malting)', hops: 'Perle, Saphir, Spalter Select', yeast: 'Munich Classic (Lallemand), верховое брожение', label: '' },
+      more: '', malt: 'Светлый пилснер, пшеничный (Castle Malting)', hops: 'Perle, Saphir, Spalter Select', yeast: 'Munich Classic (Lallemand), верховое брожение', label: 'img/tags/vit-bir.webp' },
 
-    { id: 'staut', name: 'Стаут', kind: 'Тёмное', type: 'dark', color: 'dark', filt: ['u'], alc: '6', og: '15', ibu: '', ending: true,
+    { id: 'staut', name: 'Стаут', kind: 'Тёмное', type: 'dark', color: 'dark', filt: ['u'], alc: '6', og: '15', ibu: '', ending: true, hidden: true,   // 25.11: в CRM нет — партия кончилась
       desc: 'Тона кофе, горького шоколада и жареного ячменя.',
       more: '', malt: '', hops: '', yeast: '', label: '' },
 

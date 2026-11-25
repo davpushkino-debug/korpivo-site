@@ -119,12 +119,12 @@
   <div class="wrap about__in">
     <div class="about__emblem reveal">
       <img src="img/emblem-480.webp" width="480" height="473" loading="lazy" decoding="async"
-           alt="Знак завода: шишка хмеля в виде спутника внутри пивной пробки">
+           alt="Логотип завода: хмель в виде спутника внутри пивной пробки">
     </div>
     <div class="about__text">
       <p class="eyebrow"><span class="num">I</span> О заводе</p>
       <h2 class="h2 reveal">Пивоварня в&nbsp;городе, откуда начинался космос</h2>
-      <p class="reveal">Королевский пивоваренный завод основан в&nbsp;2024&nbsp;году, а&nbsp;в&nbsp;2025-м сварил первое пиво в&nbsp;Королёве. Наш знак — шишка хмеля, летящая как первый спутник: так мы отдаём дань родному городу.</p>
+      <p class="reveal">Королевский пивоваренный завод основан в&nbsp;2024&nbsp;году, а&nbsp;в&nbsp;2025-м сварил первое пиво в&nbsp;Королёве. Наш логотип — хмель, летящий как первый спутник: так мы отдаём дань родному городу.</p>
       <p class="reveal">Мы не пастеризуем пиво, поэтому оно сохраняет вкус свежей варки. Каждый сорт задекларирован, а&nbsp;сроки годности честные и&nbsp;короткие.</p>
 
       <ol class="timeline reveal">
@@ -196,19 +196,21 @@
     <div class="section__head">
       <p class="eyebrow"><span class="num">II</span> Ассортимент</p>
       <h2 class="h2" data-count="{n} {сортов} пива">27 сортов пива</h2>
-      <p class="section__lead">От лёгких лагеров до стаута и ДИПА. Многие сорта варим в двух вариантах — фильтрованном и нефильтрованном.</p>
+      <p class="section__lead">От лёгких лагеров до стаута и ДИПА. Большинство сортов представлены в двух вариантах: фильтрованном и нефильтрованном.</p>
     </div>
 
     <div class="filters" role="group" aria-label="Фильтр сортов">
-      <div class="filters__group" data-filter="type">
+      <div class="filters__group" data-filter="type" role="group" aria-labelledby="f-type">
+        <p class="filters__label" id="f-type">Вид пива</p>
         <button type="button" class="chip is-on" data-value="all">Все</button>
         <button type="button" class="chip" data-value="light">Светлое</button>
         <button type="button" class="chip" data-value="wheat">Пшеничное</button>
         <button type="button" class="chip" data-value="dark">Тёмное</button>
         <button type="button" class="chip chip--new" data-value="new">Новинки</button>
       </div>
-      <div class="filters__group" data-filter="filt">
-        <button type="button" class="chip is-on" data-value="all">Любое</button>
+      <div class="filters__group" data-filter="filt" role="group" aria-labelledby="f-filt">
+        <p class="filters__label" id="f-filt">Фильтрация</p>
+        <button type="button" class="chip is-on" data-value="all">Все</button>
         <button type="button" class="chip" data-value="f">Фильтрованное</button>
         <button type="button" class="chip" data-value="u">Нефильтрованное</button>
       </div>
@@ -217,6 +219,8 @@
 
     <!-- Плитки сортов строятся из файла js/data.js — правьте сорта там -->
     <div class="beer-grid" id="beer-grid"></div>
+    <!-- Сколько рядов показывать сразу — js/data.js → settings.beerRows -->
+    <div class="beers__more" hidden><button class="btn btn--line" id="beer-more" type="button" aria-controls="beer-grid"></button></div>
     <noscript><p class="beers__empty">Включите JavaScript, чтобы увидеть список сортов.</p></noscript>
     <p class="beers__empty" id="beer-empty" hidden>Таких сортов сейчас нет — попробуйте другой фильтр.</p>
     <p class="beers__note">Нажмите на сорт, чтобы открыть карточку с ценником и составом. Срок годности: фильтрованное — 60 суток, нефильтрованное — 30 суток (до и после вскрытия).</p>
@@ -229,7 +233,7 @@
     <div class="partners__text">
       <p class="eyebrow"><span class="num">III</span> Сотрудничество</p>
       <h2 class="h2">Магазинам разливного пива</h2>
-      <p class="section__lead">Работаем с&nbsp;магазинами Москвы и&nbsp;Подмосковья. Позвоните или оставьте заявку — подберём ассортимент под вашу витрину и&nbsp;расскажем об&nbsp;условиях.</p>
+      <p class="section__lead">Работаем с&nbsp;магазинами Москвы и&nbsp;Подмосковья. Позвоните или напишите — подберём ассортимент под вашу витрину и&nbsp;расскажем об&nbsp;условиях.</p>
 
       <ol class="perks">
         <li class="reveal"><span class="num">I</span><div><h3>Широкая линейка</h3><p><span data-count="{n} {сортов}">27 сортов</span>: от лёгких лагеров до стаута и&nbsp;ДИПА, фильтрованные и&nbsp;нефильтрованные.</p></div></li>
@@ -241,6 +245,7 @@
       <div class="callout">
         <p>Звоните по поводу поставок</p>
         <a class="callout__phone" href="tel:+79855486346">+7&nbsp;985&nbsp;548-63-46</a>
+        <button class="callout__mail" type="button" data-ask>или напишите в Telegram или на почту</button>
         <!-- Прайс-лист: замените файл files/price-list.pdf, ссылка останется прежней -->
         <a class="callout__file" href="files/price-list.pdf" target="_blank" rel="noopener" download>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
@@ -264,29 +269,6 @@
     </figure>
   </div>
 
-  <!-- ---------- Заявка от магазина (отправляет send.php, см. README) ---------- -->
-  <div class="wrap">
-    <div class="order" id="order">
-      <div class="order__head">
-        <h3 class="order__title">Заявка на поставку</h3>
-        <p>Оставьте контакты — перезвоним в&nbsp;рабочее время, пришлём прайс и&nbsp;договоримся о&nbsp;пробной поставке.</p>
-      </div>
-      <form class="form" id="order-form" novalidate>
-        <label class="form__field"><span>Магазин или компания</span><input name="shop" type="text" maxlength="120" autocomplete="organization" required></label>
-        <label class="form__field"><span>Город, адрес</span><input name="city" type="text" maxlength="160" autocomplete="address-level2"></label>
-        <label class="form__field"><span>Как к вам обращаться</span><input name="name" type="text" maxlength="80" autocomplete="name" required></label>
-        <label class="form__field"><span>Телефон</span><input name="phone" type="tel" maxlength="40" autocomplete="tel" inputmode="tel" required></label>
-        <label class="form__field form__field--wide"><span>Комментарий — какие сорта интересуют</span><textarea name="comment" rows="3" maxlength="1000"></textarea></label>
-        <!-- ловушка для спам-ботов: люди это поле не видят -->
-        <label class="form__trap" aria-hidden="true">Сайт <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
-        <label class="form__agree form__field--wide"><input name="agree" type="checkbox" required> <span>Согласен на&nbsp;обработку персональных данных согласно <a href="privacy.html" target="_blank">политике конфиденциальности</a></span></label>
-        <div class="form__foot form__field--wide">
-          <button class="btn btn--light" type="submit">Отправить заявку</button>
-          <p class="form__status" id="order-status" role="status" aria-live="polite"></p>
-        </div>
-      </form>
-    </div>
-  </div>
 </section>
 
 <!-- ============ ГДЕ КУПИТЬ ============ -->
@@ -317,7 +299,9 @@
     </div>
     <div class="contacts__list">
       <div><p class="eyebrow">Отдел продаж</p><a class="contacts__phone" href="tel:+79855486346">+7&nbsp;985&nbsp;548-63-46</a></div>
-      <div><p class="eyebrow">Почта</p><p><a class="contacts__mail" href="mailto:kpk.korolev@list.ru">kpk.korolev@list.ru</a></p></div>
+      <div><p class="eyebrow">Telegram и почта</p>
+        <p><a class="contacts__mail" href="https://t.me/davmoscow" target="_blank" rel="noopener">@davmoscow</a></p>
+        <p><a class="contacts__mail" href="mailto:kpk.korolev@list.ru">kpk.korolev@list.ru</a></p></div>
       <div><p class="eyebrow">Производство</p><p>Московская обл., г.&nbsp;Королёв, ул.&nbsp;Тихонравова,&nbsp;9</p></div>
       <div><p class="eyebrow">География поставок</p><p>Москва и&nbsp;Московская область</p></div>
     </div>
@@ -331,11 +315,11 @@
   <div class="wrap footer__in">
     <img class="footer__logo" src="img/logo-760.webp" width="380" height="107" loading="lazy" decoding="async" alt="Королевский пивоваренный завод">
     <div class="footer__info">
-      <!-- Реквизиты юрлица (те же — в privacy.html) -->
+      <!-- Реквизиты юрлица -->
       <p>ООО «Королёвская пивоваренная компания» (ООО «КП КОМПАНИЯ») · ИНН 5018218984 · КПП 501801001 · ОГРН 1245000104800</p>
       <p>141091, Московская обл., г.&nbsp;Королёв, мкр.&nbsp;Юбилейный, ул.&nbsp;М.К.&nbsp;Тихонравова, д.&nbsp;9</p>
       <p>Сайт предназначен для лиц старше 18 лет. Продажа алкогольной продукции через сайт не осуществляется.</p>
-      <p>© 2024–2026 Королевский пивоваренный завод · <a href="privacy.html">Политика конфиденциальности</a></p>
+      <p>© 2024–2026 Королевский пивоваренный завод</p>
     </div>
   </div>
   <p class="warning">Чрезмерное употребление алкоголя вредит вашему здоровью</p>
@@ -353,8 +337,8 @@
       <dl class="sort__spec" id="sort-spec"></dl>
       <dl class="sort__recipe" id="sort-recipe"></dl>
       <div class="sort__actions">
-        <button class="btn btn--dark" type="button" data-sort-order>Заявка на этот сорт</button>
-        <a class="btn btn--line" href="tel:+79855486346">Позвонить</a>
+        <a class="btn btn--dark" href="tel:+79855486346">Позвонить</a>
+        <button class="btn btn--line" type="button" data-ask data-ask-sort>Написать</button>
       </div>
       <div class="sort__nav">
         <button type="button" data-sort-step="-1">← Предыдущий</button>
@@ -362,6 +346,19 @@
       </div>
     </div>
   </div>
+</dialog>
+
+<!-- ============ «ГДЕ УДОБНЕЕ НАПИСАТЬ?» (Telegram и почта — в js/data.js → settings) ============ -->
+<dialog class="ask" id="ask" aria-labelledby="ask-title">
+  <button class="sort__close" type="button" data-ask-close aria-label="Закрыть">×</button>
+  <p class="ask__tag" id="ask-tag">Поставки для магазинов</p>
+  <h2 class="ask__title" id="ask-title">Где вам удобнее написать?</h2>
+  <p class="ask__text">Откроется чат с отделом продаж — текст сообщения подставим сами. Отвечаем в рабочее время.</p>
+  <div class="ask__actions">
+    <a class="btn btn--dark" id="ask-tg" href="#" target="_blank" rel="noopener">Telegram</a>
+    <a class="btn btn--line" id="ask-mail" href="#">Почта</a>
+  </div>
+  <p class="ask__note">Текст сообщения мы скопируем — если он не появится в чате сам, просто вставьте его.</p>
 </dialog>
 
 <!-- ============ ПРОСМОТР ФОТО ============ -->
