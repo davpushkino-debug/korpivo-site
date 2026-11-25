@@ -4,47 +4,99 @@
    ========================================================= */
 
 /* ---------- Шрифты (свои, без внешних запросов) ---------- */
+/* 25.11: ОДИН шрифт на всё — IBM Plex Sans (OFL, Google Fonts, переменная толщина 100–700): заголовки, текст, цифры.
+   Раньше: Cormorant (заголовки) + Manrope (текст) + Plex (цифры) — смотрелось разнобоем. Старые имена ведут на те же файлы. */
 @font-face {
-  font-family: "Cormorant"; font-weight: 600; font-style: normal; font-display: swap;
-  src: url(../fonts/cormorant-garamond-cyrillic-600-normal.woff2) format("woff2");
+  font-family: "IBM Plex Sans"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: "Cormorant"; font-weight: 600; font-style: normal; font-display: swap;
-  src: url(../fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: "IBM Plex Sans"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-latin-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latin-wght.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
 }
 @font-face {
-  font-family: "Cormorant"; font-weight: 500; font-style: italic; font-display: swap;
-  src: url(../fonts/cormorant-garamond-cyrillic-500-italic.woff2) format("woff2");
+  font-family: "IBM Plex Sans"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: "Cormorant"; font-weight: 500; font-style: italic; font-display: swap;
-  src: url(../fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: "IBM Plex Sans"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-latin-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latin-wght.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
 }
 @font-face {
-  font-family: "Manrope"; font-weight: 200 800; font-style: normal; font-display: swap;
-  src: url(../fonts/manrope-cyrillic-wght-normal.woff2) format("woff2-variations");
+  font-family: "Cormorant"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: "Manrope"; font-weight: 200 800; font-style: normal; font-display: swap;
-  src: url(../fonts/manrope-latin-wght-normal.woff2) format("woff2-variations");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* Цифры в заголовках — из IBM Plex Sans (OFL): у Cormorant старинные цифры («2», «7» ниже строки, «1» как «I»),
-   lining-nums в урезанном файле шрифта не работает. Объявлено последним — для 0–9 главнее файлов выше. */
-@font-face {
-  font-family: "Cormorant"; font-weight: 600; font-style: normal; font-display: swap;
-  src: url(../fonts/plex-sans-digits-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-digits-wght.woff2) format("woff2");
-  unicode-range: U+0030-0039;
+  font-family: "Cormorant"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-latin-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latin-wght.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
 }
 @font-face {
-  font-family: "Cormorant"; font-weight: 500; font-style: italic; font-display: swap;
-  src: url(../fonts/plex-sans-digits-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-digits-wght.woff2) format("woff2");
-  unicode-range: U+0030-0039;
+  font-family: "Cormorant"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Cormorant"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-latin-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latin-wght.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Manrope"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-latin-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latin-wght.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Manrope"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-cyrillic-wght.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-latin-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latin-wght.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+/* знак ₽ — в файле latin-ext того же Plex */
+@font-face {
+  font-family: "IBM Plex Sans"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-latinext-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latinext-wght.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+20A0-20AB, U+20AD-20C4;
+}
+@font-face {
+  font-family: "IBM Plex Sans"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-latinext-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latinext-wght.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+20A0-20AB, U+20AD-20C4;
+}
+@font-face {
+  font-family: "Cormorant"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-latinext-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latinext-wght.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+20A0-20AB, U+20AD-20C4;
+}
+@font-face {
+  font-family: "Cormorant"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-latinext-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latinext-wght.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+20A0-20AB, U+20AD-20C4;
+}
+@font-face {
+  font-family: "Manrope"; font-weight: 100 800; font-style: normal; font-display: swap;
+  src: url(../fonts/plex-sans-latinext-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latinext-wght.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+20A0-20AB, U+20AD-20C4;
+}
+@font-face {
+  font-family: "Manrope"; font-weight: 100 800; font-style: italic; font-display: swap;
+  src: url(../fonts/plex-sans-latinext-wght.woff2) format("woff2-variations"), url(../fonts/plex-sans-latinext-wght.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+20A0-20AB, U+20AD-20C4;
 }
 
 /* ---------- Цвета и размеры ---------- */
@@ -72,8 +124,8 @@
   --t-wheat: #EBD08C;
   --t-dark: #3A2318;
 
-  --serif: "Cormorant", "Times New Roman", serif;
-  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --serif: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;      /* 25.11: один шрифт — заголовки тоже Plex */
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --wrap: 1200px;
   --gutter: clamp(16px, 4vw, 40px);
   --header-h: 68px;
